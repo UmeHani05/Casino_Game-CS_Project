@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const char* ranks[] = {"King", "Queen", "Jack", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10"}; // adding Jack
+const char* ranks[] = {"King", "Queen", "Jack", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10"}; // added Jack
 const char* suits[] = {"Spades", "Hearts", "Diamond", "Clubs"};
 const int points[] = {10, 10, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Jack has a value of 10
 
