@@ -1,5 +1,3 @@
-//blackjack casino game
-
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -7,9 +5,9 @@
 
 using namespace std;
 
-const char* ranks[] = {"King", "Queen", "Ace", "Jack" "2", "3", "4", "5", "6", "7", "8", "9", "10"}; // using arrays to make ranks
+const char* ranks[] = {"King", "Queen", "Jack", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10"}; // adding Jack
 const char* suits[] = {"Spades", "Hearts", "Diamond", "Clubs"};
-const int points[] = {10, 10, 11, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // using arrays to give points
+const int points[] = {10, 10, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Jack has a value of 10
 
 void shuffle(int* deck, int size) {
     for (int i = 0; i < size; i++) {
@@ -42,7 +40,7 @@ int handValue(const int* hand, int cardnum) {
     for (int i = 0; i < cardnum; i++) {
         int rank = hand[i] % 13;
         value += points[rank];
-        if (ranks[rank] == "Ace") {
+        if (strcmp(ranks[rank], "Ace") == 0) {
             aces++;
         }
     }
@@ -93,6 +91,8 @@ int main() {
             }
         }
     } while (chc == 'h' || chc == 'H');
+
     
+
     return 0;
 }
