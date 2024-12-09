@@ -7,9 +7,9 @@
 
 using namespace std;
 
-const char* ranks[] = {"King", "Queen", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10"}; // using arrays to make ranks
+const char* ranks[] = {"King", "Queen", "Ace", "Jack" "2", "3", "4", "5", "6", "7", "8", "9", "10"}; // using arrays to make ranks
 const char* suits[] = {"Spades", "Hearts", "Diamond", "Clubs"};
-const int points[] = {10, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // using arrays to give points
+const int points[] = {10, 10, 11, 10, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // using arrays to give points
 
 void shuffle(int* deck, int size) {
     for (int i = 0; i < size; i++) {
