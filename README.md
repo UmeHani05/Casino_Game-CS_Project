@@ -79,6 +79,12 @@ int main() {
     distribute(deck, deckindex, dealer, dealercard);
 
     char chc;
+
+    cout<< "\t Welcome to the house of fortune, where luck is just a spin away.\n \t\t   Place your bets and get ready to win big! \n";
+    cout<<"\t ================================================================= \n";
+    cout<<endl;
+    
+    //players turn
     do {
         showHand(player, playercard, "Player");
         cout << "Do you want to hit or stand? (h/s): ";
