@@ -56,7 +56,10 @@ void showHand(const int* hand, int cardnum, const char* player) {
     for (int i = 0; i < cardnum; i++) {
         printCard(hand[i]);
     }
+    cout << endl;
     cout << "Total value: " << handValue(hand, cardnum) << '\n';
+    cout << endl;
+    cout << endl;
 }
 
 int main() {
@@ -84,21 +87,60 @@ int main() {
     cout<<"\t ================================================================= \n";
     cout<<endl;
     
-    //players turn
-    do {
-        showHand(player, playercard, "Player");
-        cout << "Do you want to hit or stand? (h/s): ";
+    //placing bets
+    do
+    {
+        cout << "\t\t" << "Place your bets! $ ";
+        cin >> playerbet;
+        cout << endl;
+        cout << "\t\t" << "You placed a bet of $" << playerbet << ".\n \t\tPress Y/y to confirm and N/n to change your bet: ";
         cin >> chc;
+        cout<< endl;
+        cout << endl;
+    } while (chc == 'n' || chc == 'N');
+    
+    double dealerbet = playerbet;
+// players turn 
+do {
+    showHand(player, playercard, "Player");
+        showHand (dealer, dealercard, "Dealer");
+        cout << "\t\t"<<"Do you want to stand or hit or double down by increasing your bet by 100% ? (s/h/d): ";
+        cin >> chc;
+        cout<<endl;
+        cout << endl;
         if (chc == 'h' || chc == 'H') {
             distribute(deck, deckindex, player, playercard);
             if (handValue(player, playercard) > 21) {
-                cout << "Player busts! You lose.\n";
-                return 0;
+            showHand (player, playercard, "Player");
+            cout << "\t\t"<<"--Player busts! You lose. $" << playerbet << " lost!--\n";
+            return 0;
             }
+        } else if (chc == 'd' || chc == 'D')
+        {
+            playerbet = playerbet * 2;
+            dealerbet = playerbet;
+            cout << "\t\t" << "Bet increased to $" << playerbet << endl; 
+            cout << endl;
         }
+        
     } while (chc == 'h' || chc == 'H');
+// Determine the winner
+    int playerValue = handValue(player, playercard);
+    int dealerValue = handValue(dealer, dealercard);
 
-    
+    distribute(deck, deckindex, dealer, dealercard);
+    showHand(player, playercard, "Player");
+    showHand(dealer, dealercard, "Dealer");
+
+    if (dealerValue > 21) {
+        cout << "\t\t" << "--Dealer busts! You win $" << playerbet + dealerbet << "!--\n";
+    } else if (playerValue > dealerValue) {
+        cout << "\t\t" << "--You win $" << playerbet + dealerbet << "!--\n";;
+    } else if (playerValue < dealerValue) {
+        cout << "\t\t" << "--You lose. $" << playerbet << " lost!--\n";
+    } else {
+        cout << "\t\t" << "--It's a tie!--" << endl;
+    }
 
     return 0;
 }
