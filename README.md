@@ -114,7 +114,6 @@ int main() {
         showHand(player, playercard, "Player"); // displaying player's cards
         if (handValue(player, playercard) == 21) 
             {  // condition to check blackjack 
-            showHand (player, playercard, "Player");
             cout << "\t\t"<<"--Blackjack! You win $" << playerbet + dealerbet << " !--\n"; // displaying win
             return 0;
             }
